@@ -4,6 +4,7 @@ package com.ahmadi.onlineshop.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Table(name = "t_customers")
 @Getter
@@ -24,5 +25,6 @@ public class Customer {
     private String lastName;
     private String phone;
     private String address;
+
 
 }
