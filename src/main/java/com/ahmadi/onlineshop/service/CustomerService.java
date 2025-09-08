@@ -1,5 +1,6 @@
 package com.ahmadi.onlineshop.service;
 
+import com.ahmadi.onlineshop.dto.CustomerDto;
 import com.ahmadi.onlineshop.entity.Customer;
 
 import java.util.List;
@@ -7,11 +8,11 @@ import java.util.Optional;
 
 public interface CustomerService {
 
-    Customer saveCustomer(Customer customer);
+    CustomerDto  saveCustomer(CustomerDto customer);
 
-      Optional<Customer> getCustomerById(Long id);
+    CustomerDto  getCustomerById(Long id);
 
 
-    List<Customer> getAllCustomers();
+    List<CustomerDto > getAllCustomers();
     void deleteCustomer(Long id);
 }

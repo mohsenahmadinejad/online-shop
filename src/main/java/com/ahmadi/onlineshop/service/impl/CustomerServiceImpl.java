@@ -1,40 +1,54 @@
 package com.ahmadi.onlineshop.service.impl;
 
+import com.ahmadi.onlineshop.dto.CustomerDto;
 import com.ahmadi.onlineshop.entity.Customer;
 import com.ahmadi.onlineshop.repository.CustomerRepository;
 import com.ahmadi.onlineshop.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     private  CustomerRepository customerRepository;
+    private  ModelMapper modelMapper;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, ModelMapper modelMapper) {
         this.customerRepository = customerRepository;
+        this.modelMapper = modelMapper;
     }
 
+    @Override
+    public CustomerDto saveCustomer(CustomerDto customerDto) {
+        Customer customer = modelMapper.map(customerDto, Customer.class);
+        Customer saved = customerRepository.save(customer);
 
-
-    public Customer saveCustomer(Customer customer) {
-        return customerRepository.save(customer);
+        return modelMapper.map(saved, CustomerDto.class);
     }
 
-
-    public Optional<Customer> getCustomerById(Long id) {
-        return customerRepository.findById(id);
+    @Override
+    public CustomerDto getCustomerById(Long id) {
+        return customerRepository.findById(id)
+                .map(customer -> modelMapper.map(customer, CustomerDto.class))
+                .orElse(null);
     }
 
-
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    @Override
+    public List<CustomerDto> getAllCustomers() {
+        return customerRepository.findAll()
+                .stream()
+                .map(customer->modelMapper.map(customer, CustomerDto.class))
+                .collect(Collectors.toList());
     }
+
+    @Override
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
