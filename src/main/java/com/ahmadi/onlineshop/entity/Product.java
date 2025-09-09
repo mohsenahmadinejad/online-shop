@@ -23,7 +23,7 @@ public class Product {
     private Double price;
 
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "product")
     private List<Category> categories;
 
 }
