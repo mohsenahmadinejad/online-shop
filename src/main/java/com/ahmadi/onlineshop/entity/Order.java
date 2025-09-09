@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name="tbl_order")
+@Table(name="t_order")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,8 +22,14 @@ public class Order {
     private Double totalAmount;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "fk_customer_id",referencedColumnName = "id")
-//    private Customer   customer;
+    @ManyToOne
+    @JoinColumn(name = "fk_customer_id",referencedColumnName = "id",nullable = false)
+    private Customer   customer;
+
+    @OneToMany(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
+
+
+
 
 }
