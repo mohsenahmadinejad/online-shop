@@ -26,7 +26,7 @@ public class Category {
     joinColumns = @JoinColumn(name = "fk_product_id",referencedColumnName = "id"),
          inverseJoinColumns = @JoinColumn(name = "fk_category_id",referencedColumnName = "id"))
     @JsonBackReference
-    private List<Product> product;
+    private List<Product> products;
 
 
 }

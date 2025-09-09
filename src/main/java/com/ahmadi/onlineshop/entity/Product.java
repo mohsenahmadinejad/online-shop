@@ -24,7 +24,7 @@ public class Product {
     private Double price;
 
 
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany(mappedBy = "products")
     @JsonManagedReference
     private List<Category> categories;
 
