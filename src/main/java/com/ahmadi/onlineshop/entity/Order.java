@@ -29,6 +29,9 @@ public class Order {
     @OneToMany(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 
+    @OneToOne(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private ShippingAddress shippingAddress;
+
 
 
 
