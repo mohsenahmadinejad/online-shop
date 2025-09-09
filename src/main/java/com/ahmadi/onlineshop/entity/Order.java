@@ -1,5 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,12 +26,15 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id",referencedColumnName = "id",nullable = false)
+    @JsonBackReference
     private Customer   customer;
 
     @OneToMany(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<OrderItem> orderItems;
 
     @OneToOne(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
     private ShippingAddress shippingAddress;
 
 

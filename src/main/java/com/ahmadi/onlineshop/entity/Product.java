@@ -1,5 +1,6 @@
 package com.ahmadi.onlineshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Product {
 
 
     @ManyToMany(mappedBy = "product")
+    @JsonManagedReference
     private List<Category> categories;
 
 }

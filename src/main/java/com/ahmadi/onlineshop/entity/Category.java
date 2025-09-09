@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Category {
     @JoinTable(name = "t_category_product",
     joinColumns = @JoinColumn(name = "fk_product_id",referencedColumnName = "id"),
          inverseJoinColumns = @JoinColumn(name = "fk_category_id",referencedColumnName = "id"))
+    @JsonBackReference
     private List<Product> product;
 
 

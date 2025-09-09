@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Stock {
 
     @OneToOne
     @JoinColumn(name="fk_product_id",referencedColumnName = "id")
+    @JsonBackReference
     private Product product;
 
 

@@ -2,6 +2,7 @@ package com.ahmadi.onlineshop.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -38,6 +39,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @JoinColumn(name = "fk_customer_id" ,referencedColumnName = "id" ,nullable = false )
 //    @JsonIgnore
+    @JsonManagedReference
     private List<Order> orders;
 
 }

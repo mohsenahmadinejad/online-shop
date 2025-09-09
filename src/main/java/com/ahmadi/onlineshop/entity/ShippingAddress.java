@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class ShippingAddress {
 
     @OneToOne
     @JoinColumn(name = "fk_order_id", referencedColumnName = "id")
+    @JsonBackReference
     private  Order order;
 
 
