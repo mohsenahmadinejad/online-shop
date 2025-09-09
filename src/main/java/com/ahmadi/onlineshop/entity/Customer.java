@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -39,7 +40,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @JoinColumn(name = "fk_customer_id" ,referencedColumnName = "id" ,nullable = false )
 //    @JsonIgnore
-    @JsonManagedReference
+    @JsonBackReference
     private List<Order> orders;
 
 }

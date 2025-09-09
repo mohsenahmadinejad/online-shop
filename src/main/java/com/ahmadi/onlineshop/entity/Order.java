@@ -26,11 +26,11 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id",referencedColumnName = "id",nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     private Customer   customer;
 
     @OneToMany(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<OrderItem> orderItems;
 
     @OneToOne(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
