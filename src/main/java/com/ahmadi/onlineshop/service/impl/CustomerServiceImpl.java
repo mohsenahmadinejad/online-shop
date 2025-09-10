@@ -5,8 +5,12 @@ import com.ahmadi.onlineshop.entity.Customer;
 import com.ahmadi.onlineshop.repository.CustomerRepository;
 import com.ahmadi.onlineshop.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,7 @@ import java.util.stream.Collectors;
 
 
 @Service
+@Log
 public class CustomerServiceImpl implements CustomerService {
 
     private  CustomerRepository customerRepository;
@@ -36,7 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Cacheable(value = "customer", key = "#id")
     public CustomerDto getCustomerById(Long id) {
+        log.info("start fetching  customer by id: "+id);
         return customerRepository.findById(id)
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
                 .orElse(null);
@@ -51,11 +58,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @CacheEvict(value = "customer" , key = "#id")
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
 
     @Override
+    @CachePut(value = "customer",key = "#updatedCustomer.id")
     public Customer updateCustomer(Long id, CustomerDto customerDto) {
         Customer existing = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + id));

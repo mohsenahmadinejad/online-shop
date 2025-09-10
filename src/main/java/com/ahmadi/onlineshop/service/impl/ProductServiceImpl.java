@@ -8,6 +8,9 @@ import com.ahmadi.onlineshop.repository.ProductRepository;
 import com.ahmadi.onlineshop.service.ProductService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -38,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "product", key = "#id")
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
@@ -49,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
+    @CachePut(value = "product",key = "#updatedCustomer.id")
     public Product updateProduct(Long id, Product product) {
         Product existing = getProductById(id);
         existing.setName(product.getName());
@@ -69,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
+    @CacheEvict(value = "product" , key = "#id")
     public void deleteProduct(Long id) {
         Product product = getProductById(id);
         for (Category category : product.getCategories()) {

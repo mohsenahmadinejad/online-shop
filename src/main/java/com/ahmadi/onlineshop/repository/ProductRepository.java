@@ -17,6 +17,18 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Order findByName(String name );
 
 
+    Page<Product> findByNameContainingIgnoreCaseAndStockQuantityGreaterThan(
+            String name, int stockQuantity, Pageable pageable
+    );
+
+    Page<Product> findByCategoriesIdAndStockQuantityGreaterThan(
+            Long categoryId, int stockQuantity, Pageable pageable
+    );
+
+    Page<Product> findByNameContainingIgnoreCaseAndCategoriesIdAndStockQuantityGreaterThan(
+            String name, Long categoryId, int stockQuantity, Pageable pageable
+    );
+
     @Query("SELECT new com.ahmadi.onlineshop.dto.ProductPopularityDto(i.product.id, SUM(i.quantity)) " +
             "FROM OrderItem i GROUP BY i.product.id ORDER BY SUM(i.quantity) DESC")
     List<ProductPopularityDto> findTopSellingProducts(Pageable pageable);
