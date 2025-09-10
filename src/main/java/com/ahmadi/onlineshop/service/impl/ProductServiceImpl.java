@@ -26,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
                 if (category.getId()!=null){
                     category=categoryRepository.findById(category.getId()).
                             orElseThrow(() -> new RuntimeException("category not found"));
+
                 }
             });
         }

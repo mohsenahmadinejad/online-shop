@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,12 +22,8 @@ public class Category {
     private Long id;
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "t_category_product",
-    joinColumns = @JoinColumn(name = "fk_product_id",referencedColumnName = "id"),
-         inverseJoinColumns = @JoinColumn(name = "fk_category_id",referencedColumnName = "id"))
-    @JsonBackReference
-    private List<Product> products;
+    @ManyToMany(mappedBy = "categories")
+    private List<Product> products = new ArrayList<>();
 
 
 }
