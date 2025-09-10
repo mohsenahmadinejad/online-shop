@@ -1,16 +1,17 @@
 package com.ahmadi.onlineshop.service.impl;
 
 import com.ahmadi.onlineshop.dto.OrderDto;
-import com.ahmadi.onlineshop.entity.Customer;
-import com.ahmadi.onlineshop.entity.Order;
-import com.ahmadi.onlineshop.entity.OrderItem;
-import com.ahmadi.onlineshop.entity.Product;
+import com.ahmadi.onlineshop.entity.*;
+import com.ahmadi.onlineshop.exception.InsufficientStockException;
 import com.ahmadi.onlineshop.repository.CustomerRepository;
 import com.ahmadi.onlineshop.repository.OrderRepository;
 import com.ahmadi.onlineshop.repository.ProductRepository;
+import com.ahmadi.onlineshop.repository.StockRepository;
 import com.ahmadi.onlineshop.service.OrderService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,8 +26,29 @@ public class OrderServiceImpl implements OrderService {
     private final ProductRepository productRepository;
     private final CustomerRepository customerRepository;
 
+    private final StockRepository stockRepository;
+
+    private static final int MAX_RETRIES = 3;
+
     @Override
     public Order createOrder(Order order) {
+        int attempts = 0;
+        while (true) {
+            try {
+                return tryCreateOrder(order);
+            } catch (OptimisticLockingFailureException ex) {
+                attempts++;
+                if (attempts >= MAX_RETRIES) {
+                    throw new RuntimeException("Could not complete order due to concurrent stock updates, please try again.");
+                }
+
+            }
+        }
+    }
+
+
+    @Transactional
+    public Order tryCreateOrder(Order order) {
         Customer customer=customerRepository.findById(order.getCustomer().getId())
                 .orElseThrow(() -> new RuntimeException("Customer Not found"));
 
@@ -34,6 +56,16 @@ public class OrderServiceImpl implements OrderService {
         order.getOrderItems().forEach(orderItem -> {
             Product product=productRepository.findById(orderItem.getProduct().getId()).
                     orElseThrow(() -> new RuntimeException("Product not found"));
+
+            Stock stock = stockRepository.findByProductId(product.getId())
+                    .orElseThrow(() -> new RuntimeException("Stock not found for product " + product.getId()));
+
+            if (stock.getQuantity() < orderItem.getQuantity()) {
+                throw new InsufficientStockException(product.getId(), stock.getQuantity(), orderItem.getQuantity());
+            }
+            stock.setQuantity(stock.getQuantity() - orderItem.getQuantity());
+            stockRepository.save(stock);
+
             orderItem.setOrder(order);
             orderItem.setPrice(product.getPrice()*orderItem.getQuantity());
 

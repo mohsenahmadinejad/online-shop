@@ -26,5 +26,6 @@ public class Stock {
     @JsonBackReference
     private Product product;
 
-
+    @Version
+    private Long version;
 }
