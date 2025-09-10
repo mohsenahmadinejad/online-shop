@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -13,7 +14,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class Stock {
+public class Stock  extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

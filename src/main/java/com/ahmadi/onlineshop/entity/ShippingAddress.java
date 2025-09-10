@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +13,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class ShippingAddress {
+public class ShippingAddress extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
