@@ -33,4 +33,11 @@ public class Product {
     )
     private List<Category> categories = new ArrayList<>();
 
+    @OneToOne(mappedBy = "product" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Stock stock ;
+
+
+
+
 }
