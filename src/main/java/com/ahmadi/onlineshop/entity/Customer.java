@@ -5,6 +5,7 @@ import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,6 +43,7 @@ public class Customer extends Auditable {
 //    @JoinColumn(name = "fk_customer_id" ,referencedColumnName = "id" ,nullable = false )
 //    @JsonIgnore
     @JsonBackReference
+    @Schema(description = "List of orders placed by the customer")
     private List<Order> orders;
 
 }

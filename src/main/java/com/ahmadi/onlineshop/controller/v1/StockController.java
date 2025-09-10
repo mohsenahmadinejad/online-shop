@@ -2,11 +2,13 @@ package com.ahmadi.onlineshop.controller.v1;
 
 import com.ahmadi.onlineshop.entity.Stock;
 import com.ahmadi.onlineshop.service.StockService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Stock", description = "Operations related to product stock management")
 @RestController
 @RequestMapping("/api/v1/stocks")
 public class StockController {
