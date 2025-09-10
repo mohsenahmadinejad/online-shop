@@ -5,6 +5,7 @@ import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name="tbl_Shipping_Address")
@@ -13,6 +14,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+@Audited
 public class ShippingAddress extends Auditable {
 
     @Id

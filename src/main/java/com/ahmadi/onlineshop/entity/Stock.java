@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name="tbl_stock")
@@ -15,6 +16,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+@Audited
 public class Stock  extends Auditable {
 
     @Id

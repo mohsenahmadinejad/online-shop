@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    @CachePut(value = "customer",key = "#updatedCustomer.id")
+    @CachePut(value = "customer",key = "#id")
     public Customer updateCustomer(Long id, CustomerDto customerDto) {
         Customer existing = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + id));

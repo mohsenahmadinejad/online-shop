@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Audited
 public class Product extends Auditable {
 
     @Id
@@ -44,8 +46,6 @@ public class Product extends Auditable {
     @JsonManagedReference
     @Schema(description = "Stock information of the product")
     private Stock stock ;
-
-
 
 
 }

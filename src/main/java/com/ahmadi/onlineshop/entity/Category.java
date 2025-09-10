@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Audited
 public class Category extends Auditable {
 
     @Id
@@ -29,6 +31,7 @@ public class Category extends Auditable {
 
     @ManyToMany(mappedBy = "categories")
     @JsonBackReference
+    @Schema(description = "Description of the category", example = "All electronic devices and gadgets")
     private List<Product> products = new ArrayList<>();
 
 

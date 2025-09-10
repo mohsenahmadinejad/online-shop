@@ -4,6 +4,9 @@ import com.ahmadi.onlineshop.dto.CustomerDto;
 import com.ahmadi.onlineshop.entity.Customer;
 import com.ahmadi.onlineshop.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,6 +55,8 @@ public class CustomerController {
     @GetMapping("/phone") //GET /api/customers/phone?phone=0912&sortBy=firstName&direction=asc
     @Operation(summary = "Search customers with pagination and sorting", description = "Search customers with filters phone number")
     public Page<Customer> searchByPhone(
+
+            @Parameter(description = "Customer phone number")
             @RequestParam String phone,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -78,6 +83,10 @@ public class CustomerController {
         return ResponseEntity.ok(saved);
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Customer found"),
+            @ApiResponse(responseCode = "404", description = "Customer not found")
+    })
     @GetMapping("/{id}")
     @Operation(summary = "Get customer by ID", description = "Fetch a single customer by its ID")
     public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long id) {
