@@ -17,6 +17,7 @@ public interface CustomerService {
     List<CustomerDto > getAllCustomers();
     void deleteCustomer(Long id);
 
+    public Customer updateCustomer(Long id, CustomerDto customerDto) ;
 
 
 

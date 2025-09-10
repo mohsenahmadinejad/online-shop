@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
 
+import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -18,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @ToString(exclude = "orders")
-public class Customer {
+public class Customer extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

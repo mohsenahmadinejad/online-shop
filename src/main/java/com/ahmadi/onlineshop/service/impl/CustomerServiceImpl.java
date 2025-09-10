@@ -56,6 +56,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer updateCustomer(Long id, CustomerDto customerDto) {
+        Customer existing = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found with id " + id));
+
+        existing.setFirstName(customerDto.getFirstName());
+        existing.setLastName(customerDto.getLastName());
+        existing.setAddress(customerDto.getAddress());
+        existing.setPhone(customerDto.getPhone());
+
+        return customerRepository.save(existing);
+    }
+
+    @Override
     public Page<Customer> searchByName(String firstName, String lastName, Pageable pageable) {
         return customerRepository
                 .findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(firstName, lastName, pageable);
