@@ -1,5 +1,6 @@
-package com.ahmadi.onlineshop.repository;
+package com.ahmadi.onlineshop.controller.v1;
 
+import com.ahmadi.onlineshop.dto.ProductPopularityDto;
 import com.ahmadi.onlineshop.entity.Product;
 import com.ahmadi.onlineshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,13 @@ public class ProductController {
 
     @Autowired
     private  ProductService productService;
+
+
+    @GetMapping("/top-selling")
+    public List<ProductPopularityDto> getTopSelling(@RequestParam(defaultValue = "10") int topN) {
+        return productService.getTopSellingProducts(topN);
+    }
+
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {

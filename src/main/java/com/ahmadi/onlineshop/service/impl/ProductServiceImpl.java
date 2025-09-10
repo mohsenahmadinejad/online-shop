@@ -1,5 +1,6 @@
 package com.ahmadi.onlineshop.service.impl;
 
+import com.ahmadi.onlineshop.dto.ProductPopularityDto;
 import com.ahmadi.onlineshop.entity.Category;
 import com.ahmadi.onlineshop.entity.Product;
 import com.ahmadi.onlineshop.repository.CategoryRepository;
@@ -7,6 +8,8 @@ import com.ahmadi.onlineshop.repository.ProductRepository;
 import com.ahmadi.onlineshop.service.ProductService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,6 +76,12 @@ public class ProductServiceImpl implements ProductService {
         }
         product.getCategories().clear();
         productRepository.delete(product);
+    }
+
+    @Override
+    public List<ProductPopularityDto> getTopSellingProducts(int topN) {
+        Pageable pageable = PageRequest.of(0, topN);
+        return productRepository.findTopSellingProducts(pageable);
     }
 }
 

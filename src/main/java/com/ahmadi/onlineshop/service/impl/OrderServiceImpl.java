@@ -12,6 +12,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -92,5 +94,20 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAll() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public Page<Order> findByOrderDateBetween(LocalDateTime start, LocalDateTime end, Pageable pageable) {
+        return orderRepository.findByOrderDateBetween(start, end, pageable);
+    }
+
+    @Override
+    public Page<Order> findByCustomerId(Long customerId, Pageable pageable) {
+        return orderRepository.findByCustomerId(customerId, pageable);
+    }
+
+    @Override
+    public Page<Order> findByTotalAmountBetween(Float min, Float max, Pageable pageable) {
+        return orderRepository.findByTotalAmountBetween(min, max, pageable);
     }
 }

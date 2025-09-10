@@ -7,6 +7,8 @@ import com.ahmadi.onlineshop.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,4 +54,16 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Customer> searchByName(String firstName, String lastName, Pageable pageable) {
+        return customerRepository
+                .findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(firstName, lastName, pageable);
+    }
+
+    @Override
+    public Page<Customer> searchByPhone(String phone, Pageable pageable) {
+        return customerRepository.findByPhoneContaining(phone, pageable);
+    }
+
 }
