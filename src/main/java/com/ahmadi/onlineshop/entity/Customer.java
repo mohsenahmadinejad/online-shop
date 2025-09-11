@@ -51,4 +51,8 @@ public class Customer extends Auditable {
     @Schema(description = "List of orders placed by the customer")
     private List<Order> orders;
 
+
+    // TODO: change it to OnetoOne relation with User entity
+    private Long userId;
+
 }

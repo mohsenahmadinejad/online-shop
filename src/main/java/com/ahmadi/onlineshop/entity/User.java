@@ -1,5 +1,7 @@
 package com.ahmadi.onlineshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,4 +19,8 @@ public class User {
     @Column(unique = true, length = 20)
     private String username;
     private String password;
+
+
+
+
 }

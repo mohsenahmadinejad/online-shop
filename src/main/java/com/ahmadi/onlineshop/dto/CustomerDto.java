@@ -1,5 +1,6 @@
 package com.ahmadi.onlineshop.dto;
 
+import com.ahmadi.onlineshop.entity.User;
 import com.ahmadi.onlineshop.service.customValidation.PhoneNumberFormatConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -32,6 +33,9 @@ public class CustomerDto {
 
     @Schema(description = "Address  of the customer", example = "Enghelab St")
     private String address;
+
+    // TODO: change it to  User entity
+    private Long userId;
 
 
 }

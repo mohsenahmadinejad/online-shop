@@ -1,0 +1,279 @@
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Hannah', 'Mclaughlin', 'USNS Hanna, FPO AE 02944', '(185)355-5391x0027');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Margaret', 'Jackson', '869 Angela Harbors, Elizabethhaven, DE 73231', '001-989-699-9418x410');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Jennifer', 'Solis', 'Unit 3168 Box 2180, DPO AA 86075', '6150420276');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'John', 'Wright', '67848 Kayla Port Suite 092, Hortonmouth, RI 71393', '173.316.9158x7042');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Michael', 'Morgan', '089 Diane Lodge Apt. 591, New Robinstad, MT 86616', '953-131-9111');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Ann', 'Smith', '771 Austin Ridge, Yangport, NH 35475', '+1-393-489-3812x134');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Dennis', 'Mason', '14005 Haynes Manor Apt. 694, New Lauraborough, MS 26057', '001-608-328-3159x91182');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Ebony', 'Gonzales', '2447 Kristin Stream, Ruizshire, OH 17007', '601-027-7293x3681');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Brendan', 'Johnson', '226 Sarah Dam Apt. 132, West April, NE 11349', '709-442-9824x5616');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Angela', 'Moody', '355 Daniel Green Suite 320, South Justinchester, TN 61306', '+1-525-423-2918x9667');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Courtney', 'Bryant', '01745 Sarah Unions, West Bethany, OR 71435', '(689)643-4089x25677');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Travis', 'Grant', '782 Sutton Parks, North Charles, HI 86844', '0222758535');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Rodney', 'Smith', '03417 Jose Plaza, Kochborough, PA 68497', '778-711-0376');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Maria', 'Clark', 'Unit 0870 Box 5339, DPO AE 89130', '001-995-555-5918');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Jeffrey', 'Davis', '999 Turner Shoals Suite 560, East Josemouth, OR 96066', '377-342-8915x714');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Shannon', 'Rogers', 'USNV Hoffman, FPO AE 42578', '(179)535-4036');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Kevin', 'Ortega', '119 Jorge Camp Apt. 099, Craigport, DE 77835', '228.897.9454');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Tara', 'Garcia', '59917 Wolfe Crossing Suite 060, Lake Aliciaberg, KS 66684', '001-937-995-9119x10976');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Becky', 'Ware', '4844 Bryant Extension Apt. 449, New Cynthiaberg, AL 46945', '(133)845-1347x14380');
+INSERT INTO t_customers ( first_name, last_name, address, phone) VALUES ( 'Heidi', 'Pratt', '0732 Loretta Fort Suite 848, Charlesborough, UT 77407', '867-258-9962');
+-- Categories
+INSERT INTO t_category ( name) VALUES ( 'Electronics');
+INSERT INTO t_category ( name) VALUES ( 'Clothing');
+INSERT INTO t_category ( name) VALUES ( 'Books');
+INSERT INTO t_category ( name) VALUES ( 'Home Appliances');
+INSERT INTO t_category ( name) VALUES ( 'Sports');
+INSERT INTO t_category ( name) VALUES ( 'Beauty');
+INSERT INTO t_category ( name) VALUES ( 'Toys');
+INSERT INTO t_category ( name) VALUES ( 'Groceries');
+INSERT INTO t_category ( name) VALUES ( 'Furniture');
+INSERT INTO t_category ( name) VALUES ( 'Automotive');
+
+-- Products
+INSERT INTO tbl_products ( name, price) VALUES ( 'Smartphone', 496.92);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Laptop', 26.63);
+INSERT INTO tbl_products ( name, price) VALUES ( 'T-Shirt', 88.66);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Jeans', 108.13);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Refrigerator', 380.32);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Football', 165.41);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Shampoo', 332.14);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Toy Car', 38.04);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Sofa', 489.02);
+INSERT INTO tbl_products ( name, price) VALUES ( 'Car Tire', 370.59);
+
+-- Stock
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 100, 1, 1);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 50, 1, 2);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 88, 1, 3);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 9, 1, 4);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 46, 1, 5);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 58, 1, 6);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 48, 1, 7);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 57, 1, 8);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 55, 1, 9);
+INSERT INTO tbl_stock ( quantity, version, fk_product_id) VALUES ( 89, 1, 10);
+
+
+-- Product Categories (20 records, Many-to-Many)
+INSERT INTO product_categories (product_id, category_id) VALUES (1, 1); -- Smartphone -> Electronics
+INSERT INTO product_categories (product_id, category_id) VALUES (1, 10); -- Smartphone -> Automotive
+INSERT INTO product_categories (product_id, category_id) VALUES (2, 1); -- Laptop -> Electronics
+INSERT INTO product_categories (product_id, category_id) VALUES (2, 3); -- Laptop -> Books
+INSERT INTO product_categories (product_id, category_id) VALUES (3, 2); -- T-Shirt -> Clothing
+INSERT INTO product_categories (product_id, category_id) VALUES (3, 5); -- T-Shirt -> Sports
+INSERT INTO product_categories (product_id, category_id) VALUES (4, 2); -- Jeans -> Clothing
+INSERT INTO product_categories (product_id, category_id) VALUES (4, 5); -- Jeans -> Sports
+INSERT INTO product_categories (product_id, category_id) VALUES (5, 4); -- Refrigerator -> Home Appliances
+INSERT INTO product_categories (product_id, category_id) VALUES (5, 1); -- Refrigerator -> Electronics
+INSERT INTO product_categories (product_id, category_id) VALUES (6, 5); -- Football -> Sports
+INSERT INTO product_categories (product_id, category_id) VALUES (6, 7); -- Football -> Toys
+INSERT INTO product_categories (product_id, category_id) VALUES (7, 6); -- Shampoo -> Beauty
+INSERT INTO product_categories (product_id, category_id) VALUES (7, 4); -- Shampoo -> Home Appliances
+INSERT INTO product_categories (product_id, category_id) VALUES (8, 7); -- Toy Car -> Toys
+INSERT INTO product_categories (product_id, category_id) VALUES (8, 1); -- Toy Car -> Electronics
+INSERT INTO product_categories (product_id, category_id) VALUES (9, 9); -- Sofa -> Furniture
+INSERT INTO product_categories (product_id, category_id) VALUES (9, 4); -- Sofa -> Home Appliances
+INSERT INTO product_categories (product_id, category_id) VALUES (10, 10); -- Car Tire -> Automotive
+INSERT INTO product_categories (product_id, category_id) VALUES (10, 1); -- Car Tire -> Electronics
+
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-19 17:43:41', 1073.98, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-25 02:11:51', 1917.82, 3);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-05 17:15:33', 1164.23, 12);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-09 10:40:01', 983.77, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-18 18:53:16', 1101.16, 15);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-14 03:22:37', 2980.11, 19);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-07 09:54:23', 2465.41, 10);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-07 01:34:55', 1871.43, 8);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-16 23:19:32', 755.45, 18);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-06 10:54:24', 819.02, 19);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-10 16:56:40', 1250.12, 18);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-01 14:00:05', 332.16, 1);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-08-03 09:33:51', 641.84, 3);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-24 04:31:08', 3784.35, 12);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-08-19 03:24:14', 1384.59, 16);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-03 07:35:52', 262.95, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-14 07:09:31', 3898.94, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-07 04:50:30', 3542.53, 18);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-10 00:45:51', 462.38, 10);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-30 15:56:38', 1894.9, 19);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-18 20:31:15', 1522.18, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-26 15:45:20', 1165.59, 12);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-09-01 18:11:46', 2272.58, 16);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-18 11:50:55', 3273.65, 16);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-29 21:12:55', 380.74, 3);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-22 01:37:24', 755.45, 2);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-01 15:46:49', 3675.81, 8);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-08 04:22:06', 2627.07, 11);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-23 08:30:39', 1711.18, 1);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-27 11:08:35', 3234.58, 1);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-02 15:26:57', 812.52, 15);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-30 12:21:53', 323.05, 14);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-05 08:52:19', 864.02, 10);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-20 18:23:53', 3436.07, 18);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-03 07:25:52', 0, 16);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-07-01 06:24:02', 0, 20);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-04-05 09:36:13', 0, 4);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-22 10:02:45', 0, 11);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-04-10 02:32:53', 0, 17);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-06 18:31:08', 0, 8);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-04-17 11:34:18', 0, 18);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-01 03:58:56', 0, 8);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-05-17 22:32:29', 0, 16);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-28 23:25:06', 0, 19);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-02-26 21:03:40', 0, 17);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-08-23 06:04:37', 0, 4);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-03-21 06:16:37', 0, 11);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-08-20 00:19:24', 0, 7);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-06-19 23:56:04', 0, 5);
+INSERT INTO t_order ( order_date, total_amount, fk_customer_id) VALUES ( '2025-01-13 19:15:40', 0, 17);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 2, 1, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 1, 1, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 1, 1, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 4, 2, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 1, 2, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 4, 2, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 2, 3, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 5, 3, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 4, 3, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 2, 4, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 1, 4, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 4, 5, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 2, 5, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 3, 6, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 5, 6, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 2, 7, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 3, 7, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 3, 7, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 5, 7, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 2, 8, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 5, 8, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 1, 8, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 2, 8, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 5, 9, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 2, 10, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 4, 10, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 5, 11, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 1, 11, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 2, 12, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 1, 12, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 3, 13, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 5, 13, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 2, 13, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 3, 14, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 1, 14, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 4, 14, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 1, 14, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 5, 14, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 3, 15, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 5, 15, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 1, 16, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 1, 16, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 1, 17, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 4, 17, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 2, 17, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 4, 17, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 5, 17, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 4, 18, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 4, 18, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 2, 18, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 5, 18, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 5, 19, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 2, 19, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 1, 20, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 3, 20, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 4, 20, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 1, 20, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 3, 20, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 1, 21, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 5, 21, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 2, 21, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 1, 22, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 1, 22, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 1, 22, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 5, 22, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 3, 23, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 4, 23, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 2, 23, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 5, 23, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 3, 24, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 5, 24, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 1, 24, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 5, 25, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 1, 25, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 5, 26, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 3, 27, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 4, 27, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 151.09, 5, 27, 4);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 5, 27, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 4, 27, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 5, 28, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 129.21, 4, 28, 6);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 2, 28, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 234.47, 2, 28, 5);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 5, 29, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 4, 29, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 3, 30, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 1, 30, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 1, 30, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 390.32, 5, 30, 10);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 4, 31, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 1, 32, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 4, 32, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 115.85, 5, 33, 3);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 203.13, 1, 33, 8);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 81.64, 1, 33, 1);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 29.98, 2, 34, 7);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 5, 34, 9);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 59.82, 2, 34, 2);
+INSERT INTO t_order_items ( price, quantity, fk_order_id, fk_product_id) VALUES ( 361.83, 4, 34, 9);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '814 Eric Ridge Apt. 168', 'Port Brianfort', 1);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '5423 Joyce Parkway Apt. 472', 'Kennethburgh', 2);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '379 Alvarado Island Apt. 299', 'South Amber', 3);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '850 Sanders Freeway', 'East Patriciashire', 4);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7411 Henderson Club', 'North Kristaville', 5);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '39276 Daniel Center Apt. 110', 'Bakerside', 6);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '615 Franco Cove', 'Michaelburgh', 7);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '21038 Morgan Neck', 'East Christinahaven', 8);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '25130 Anthony Gardens Apt. 692', 'Manntown', 9);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '031 Johnson Forks', 'Ambermouth', 10);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '3161 Michael Islands', 'Leeburgh', 11);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '5735 Erickson Burgs Suite 587', 'Smithborough', 12);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7272 Julie Ville', 'Lake Paul', 13);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '210 Alicia Bridge Apt. 574', 'Jonesport', 14);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '543 Price Parks', 'North Heatherside', 15);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '70808 Susan Lock', 'Hughesshire', 16);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '72856 Jennifer Crescent Suite 723', 'East Carolynmouth', 17);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '969 Green Spur Suite 975', 'Leestad', 18);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7147 Paul Key', 'East Katherineburgh', 19);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '9279 King Stream Suite 182', 'South Tinaville', 20);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7425 Molina Harbors', 'Port David', 21);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '076 Parker Light', 'East Steven', 22);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '96535 Webb Alley', 'Turnerfort', 23);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '636 Hill Lake Apt. 039', 'Mendezton', 24);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '1234 Hernandez Street', 'Mcfarlandmouth', 25);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7277 Todd Stream Suite 459', 'Charlesfort', 26);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '067 Michael Ferry Apt. 149', 'Mathisberg', 27);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '62728 Rebekah Tunnel Apt. 392', 'Farrellstad', 28);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '97700 Sanchez Road Apt. 884', 'New Andrewview', 29);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '322 Ward Street', 'Lake Melissa', 30);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '60644 Christopher Parkways', 'North Lauraton', 31);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '59692 Pamela Crossing', 'Zacharyfurt', 32);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '531 Ward Lodge', 'Delacruzland', 33);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '268 Jessica Knolls', 'Port Alexa', 34);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '81882 Parker Square', 'North Jenna', 35);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '87165 Wilson Brooks', 'New Henryton', 36);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '3115 Lawrence Land', 'Lake Brianhaven', 37);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '99683 Hendricks Dale', 'Weisstown', 38);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '891 Campbell Crest Apt. 741', 'Port Elizabeth', 39);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '79851 Carmen Walk Suite 799', 'Andersonport', 40);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '2853 Martinez Turnpike Apt. 162', 'Port Robert', 41);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '333 Ryan Burg Apt. 083', 'East Jefferyland', 42);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '723 Chen Cliffs', 'Michelleland', 43);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '6802 Archer Creek Suite 021', 'North Bobbyport', 44);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '7331 Emily Mission Suite 542', 'Lake Tammy', 45);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '428 Brooks Crossroad', 'Lake Tamaraton', 46);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '486 Thomas Station Suite 242', 'Lake Kristahaven', 47);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '521 Matthew Rue', 'Charlesside', 48);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '2221 Johnson Burgs', 'Fuentesmouth', 49);
+INSERT INTO tbl_shipping_address ( address, city, fk_order_id) VALUES ( '086 Rice Brook Apt. 409', 'East Mitchell', 50);
