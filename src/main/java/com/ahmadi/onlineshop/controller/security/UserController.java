@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
-@Tag(name = "1_USer", description = "Operations related to authentication")
+@Tag(name = "User", description = "Operations related to authentication")
 @RestController
 @RequestMapping("/api/auth")
 @AllArgsConstructor

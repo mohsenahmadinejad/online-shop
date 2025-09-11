@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "1_USer", description = "Operations related to authentication")
+@Tag(name = "User", description = "Operations related to authentication")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
