@@ -1,0 +1,6 @@
+docker run -p 8080:8080 --name=online-shop  --network  online-shop-network online-shop
+docker network ls
+docker run --name=mysql1  -e MYSQL_DATABASE="ecommerce" -e MYSQL_ROOT_PASSWORD="123456"   -d -p 3306:3306  --network  online-shop-network   -v C:/data:/var/lib/mysql mysql
+docker network create online-shop-network
+
+docker build -t online-shop .

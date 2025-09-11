@@ -12,6 +12,7 @@
 	<artifactId>online-shop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>online-shop</name>
+	<packaging>jar</packaging>
 	<description>online-shop</description>
 	<url/>
 	<licenses>
