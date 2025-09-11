@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mysql1:
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: online-shop
+      ENVIRONMENT: prod
+    networks:
+      - online-shop-network
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 2s
+      retries: 30
+    volumes:
+      - C:/data:/var/lib/mysql
+  online-shop-app:
+    build: .
+    ports:
+      - "9090:9090"
+    restart: "no"
+    environment:
+      MYSQL_HOST: mysql1
+      MYSQL_PASSWORD: 123456
+      MYSQL_PORT: 3307
+      SERVER_PORT: 9090
+
+
+    depends_on:
+      mysql1:
+        condition: service_healthy
+
+    networks:
+      - online-shop-network
+
+networks:
+  online-shop-network:
