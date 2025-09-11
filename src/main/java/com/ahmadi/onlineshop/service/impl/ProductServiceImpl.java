@@ -3,6 +3,7 @@ package com.ahmadi.onlineshop.service.impl;
 import com.ahmadi.onlineshop.dto.ProductPopularityDto;
 import com.ahmadi.onlineshop.entity.Category;
 import com.ahmadi.onlineshop.entity.Product;
+import com.ahmadi.onlineshop.exception.CategoryNotFoundException;
 import com.ahmadi.onlineshop.repository.CategoryRepository;
 import com.ahmadi.onlineshop.repository.ProductRepository;
 import com.ahmadi.onlineshop.service.ProductService;
@@ -31,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
             product.getCategories().forEach(category -> {
                 if (category.getId()!=null){
                     category=categoryRepository.findById(category.getId()).
-                            orElseThrow(() -> new RuntimeException("category not found"));
+                            orElseThrow(() -> new CategoryNotFoundException("category not found"));
 
                 }
             });
@@ -63,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
         if (product.getCategories() != null) {
             for (Category category : product.getCategories()) {
                 Category persistedCategory = categoryRepository.findById(category.getId())
-                        .orElseThrow(() -> new RuntimeException("Category not found with id: " + category.getId()));
+                        .orElseThrow(() -> new CategoryNotFoundException("Category not found with id: " + category.getId()));
                 existing.getCategories().add(persistedCategory);
             }
         }

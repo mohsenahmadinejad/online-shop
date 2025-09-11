@@ -1,6 +1,7 @@
 package com.ahmadi.onlineshop.service;
 
 import com.ahmadi.onlineshop.entity.Stock;
+import com.ahmadi.onlineshop.exception.StockNotFoundException;
 import com.ahmadi.onlineshop.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class StockServiceImpl implements StockService {
     @Override
     public Stock getStockById(Long id) {
         return stockRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Stock not found with id: " + id));
+                .orElseThrow(() -> new StockNotFoundException("Stock not found with id: " + id));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.ahmadi.onlineshop.service.impl;
 
 import com.ahmadi.onlineshop.dto.CustomerDto;
 import com.ahmadi.onlineshop.entity.Customer;
+import com.ahmadi.onlineshop.exception.CustomerNotFoundException;
 import com.ahmadi.onlineshop.repository.CustomerRepository;
 import com.ahmadi.onlineshop.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -67,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
     @CachePut(value = "customer",key = "#id")
     public Customer updateCustomer(Long id, CustomerDto customerDto) {
         Customer existing = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found with id " + id));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id " + id));
 
         existing.setFirstName(customerDto.getFirstName());
         existing.setLastName(customerDto.getLastName());

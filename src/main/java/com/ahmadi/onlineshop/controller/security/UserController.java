@@ -1,8 +1,8 @@
 package com.ahmadi.onlineshop.controller.security;
 
 import com.ahmadi.onlineshop.dto.UserDto;
-import com.ahmadi.onlineshop.exceptions.InvalidPayloadException;
-import com.ahmadi.onlineshop.exceptions.UserIdAlreadyExistException;
+import com.ahmadi.onlineshop.exception.InvalidPayloadException;
+import com.ahmadi.onlineshop.exception.UserIdAlreadyExistException;
 import com.ahmadi.onlineshop.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

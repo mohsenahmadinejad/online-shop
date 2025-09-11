@@ -1,4 +1,4 @@
-package com.ahmadi.onlineshop.exceptions;
+package com.ahmadi.onlineshop.exception;
 
 public class UserIdAlreadyExistException extends RuntimeException {
     public UserIdAlreadyExistException(String userIdIsAlreadyTaken) {

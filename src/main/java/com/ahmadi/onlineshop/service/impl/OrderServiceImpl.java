@@ -2,7 +2,10 @@ package com.ahmadi.onlineshop.service.impl;
 
 import com.ahmadi.onlineshop.dto.OrderDto;
 import com.ahmadi.onlineshop.entity.*;
+import com.ahmadi.onlineshop.exception.CustomerNotFoundException;
 import com.ahmadi.onlineshop.exception.InsufficientStockException;
+import com.ahmadi.onlineshop.exception.ProductNotFoundException;
+import com.ahmadi.onlineshop.exception.StockNotFoundException;
 import com.ahmadi.onlineshop.repository.CustomerRepository;
 import com.ahmadi.onlineshop.repository.OrderRepository;
 import com.ahmadi.onlineshop.repository.ProductRepository;
@@ -52,15 +55,15 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public Order tryCreateOrder(Order order) {
         Customer customer=customerRepository.findById(order.getCustomer().getId())
-                .orElseThrow(() -> new RuntimeException("Customer Not found"));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer Not found"));
 
 
         order.getOrderItems().forEach(orderItem -> {
             Product product=productRepository.findById(orderItem.getProduct().getId()).
-                    orElseThrow(() -> new RuntimeException("Product not found"));
+                    orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
             Stock stock = stockRepository.findByProductId(product.getId())
-                    .orElseThrow(() -> new RuntimeException("Stock not found for product " + product.getId()));
+                    .orElseThrow(() -> new StockNotFoundException("Stock not found for product " + product.getId()));
 
             if (stock.getQuantity() < orderItem.getQuantity()) {
                 throw new InsufficientStockException(product.getId(), stock.getQuantity(), orderItem.getQuantity());
