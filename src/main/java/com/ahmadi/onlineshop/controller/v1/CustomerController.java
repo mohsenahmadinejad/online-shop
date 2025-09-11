@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -78,7 +79,7 @@ public class CustomerController {
 
     @PostMapping
     @Operation(summary = "Create a new customer", description = "Register a new customer in the system")
-    public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<CustomerDto> createCustomer(@Valid  @RequestBody CustomerDto customerDto) {
         CustomerDto saved = customerService.saveCustomer(customerDto);
         return ResponseEntity.ok(saved);
     }
@@ -110,7 +111,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update a customer", description = "Update customer details by ID")
-    public Customer updateCustomer(@PathVariable Long id, @RequestBody CustomerDto customerDto ) {
+    public Customer updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDto customerDto ) {
         return customerService.updateCustomer(id, customerDto);
     }
 }

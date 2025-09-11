@@ -4,6 +4,7 @@ package com.ahmadi.onlineshop.entity;
 import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -21,7 +22,9 @@ public class ShippingAddress extends Auditable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank
     private String city;
+    @NotBlank
     private String address;
 
     @OneToOne

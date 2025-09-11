@@ -5,6 +5,7 @@ import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -27,6 +28,7 @@ public class Category extends Auditable {
     private Long id;
 
     @Schema(description = "Name of the category", example = "Electronics")
+    @NotBlank
     private String name;
 
     @ManyToMany(mappedBy = "categories")

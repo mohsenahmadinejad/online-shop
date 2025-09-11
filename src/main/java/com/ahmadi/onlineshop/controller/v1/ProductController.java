@@ -5,6 +5,7 @@ import com.ahmadi.onlineshop.entity.Product;
 import com.ahmadi.onlineshop.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class ProductController {
 
     @PostMapping
     @Operation(summary = "Create a new product", description = "Add a new product to the system")
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@Valid  @RequestBody Product product) {
         return productService.createProduct(product);
     }
 
@@ -51,7 +52,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update product", description = "Update product details by ID")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    public Product updateProduct(@PathVariable Long id, @Valid @RequestBody Product product) {
         return productService.updateProduct(id, product);
     }
 

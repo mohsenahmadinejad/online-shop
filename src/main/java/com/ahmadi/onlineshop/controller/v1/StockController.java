@@ -3,6 +3,7 @@ package com.ahmadi.onlineshop.controller.v1;
 import com.ahmadi.onlineshop.entity.Stock;
 import com.ahmadi.onlineshop.service.StockService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class StockController {
 
 
     @PostMapping
-    public Stock createStock(@RequestBody Stock stock) {
+    public Stock createStock(@Valid  @RequestBody Stock stock) {
         return stockService.createStock(stock);
     }
 
@@ -38,7 +39,7 @@ public class StockController {
     }
 
     @PutMapping("/{id}")
-    public Stock updateStock(@PathVariable Long id, @RequestBody Stock stock) {
+    public Stock updateStock(@PathVariable Long id, @Valid @RequestBody Stock stock) {
         return stockService.updateStock(id, stock);
     }
 
