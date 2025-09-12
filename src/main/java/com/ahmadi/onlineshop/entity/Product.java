@@ -4,9 +4,7 @@ import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -34,7 +32,7 @@ public class Product extends Auditable {
     private String name;
 
     @Schema(description = "Price of the product", example = "48000000")
-    @NotBlank
+    @NotNull(message = "price cannot be null")
     @PositiveOrZero(message = "price must be equal or grater than 0")
     private Double price;
 

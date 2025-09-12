@@ -52,8 +52,8 @@ public class OrderController {
 
     @GetMapping("/search/by-amount")
     public Page<Order> searchOrdersByAmount(
-            @RequestParam("min") Float min,
-            @RequestParam("max") Float max,
+            @RequestParam("min") Double min,
+            @RequestParam("max") Double max,
             @PageableDefault(size = 10, sort = "orderDate", direction = Sort.Direction.ASC) Pageable pageable
     ) {
         return orderService.findByTotalAmountBetween(min, max, pageable);

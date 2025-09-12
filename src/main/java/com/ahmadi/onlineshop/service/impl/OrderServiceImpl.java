@@ -115,7 +115,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<Order> findByTotalAmountBetween(Float min, Float max, Pageable pageable) {
+    public Page<Order> findByTotalAmountBetween(Double min, Double max, Pageable pageable) {
         return orderRepository.findByTotalAmountBetween(min, max, pageable);
     }
 }

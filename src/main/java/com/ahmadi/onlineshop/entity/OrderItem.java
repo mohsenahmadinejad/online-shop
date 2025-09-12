@@ -5,6 +5,8 @@ import com.ahmadi.onlineshop.config.Auditable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -24,6 +26,8 @@ public class OrderItem extends Auditable {
     @Schema(description = "Unique identifier of the order item", example = "101")
     private Long id;
 
+    @NotNull(message = "Quantity cannot be null")
+    @Min(value = 1, message = "Quantity must be at least 1")
     @Schema(description = "Quantity of the product in the order", example = "2")
     private Integer quantity;
 

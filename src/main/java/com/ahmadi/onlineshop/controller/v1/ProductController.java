@@ -6,6 +6,7 @@ import com.ahmadi.onlineshop.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,11 @@ import java.util.List;
 @Tag(name = "Product", description = "Operations related to products")
 @RestController()
 @RequestMapping("/api/v1/products")
+@RequiredArgsConstructor
 public class ProductController {
 
-    @Autowired
-    private  ProductService productService;
+
+    private final   ProductService productService;
 
 
     @GetMapping("/top-selling")

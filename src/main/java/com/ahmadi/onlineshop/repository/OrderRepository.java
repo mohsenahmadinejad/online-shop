@@ -14,6 +14,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Page<Order> findByCustomerId(Long customerId, Pageable pageable);
 
-    Page<Order> findByTotalAmountBetween(Float min, Float max, Pageable pageable);
+    Page<Order> findByTotalAmountBetween(Double min, Double max, Pageable pageable);
+
 
 }

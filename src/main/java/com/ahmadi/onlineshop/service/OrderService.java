@@ -17,7 +17,7 @@ public interface OrderService {
 
     public Page<Order> findByOrderDateBetween(LocalDateTime start, LocalDateTime end, Pageable pageable) ;
     public Page<Order> findByCustomerId(Long customerId, Pageable pageable) ;
-    public Page<Order> findByTotalAmountBetween(Float min, Float max, Pageable pageable) ;
+    public Page<Order> findByTotalAmountBetween(Double min, Double max, Pageable pageable) ;
 
 
     }

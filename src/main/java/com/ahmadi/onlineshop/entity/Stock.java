@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -28,7 +26,8 @@ public class Stock  extends Auditable {
     private Long id;
 
     @Schema(description = "Available quantity in stock", example = "15")
-    @NotBlank
+    @NotNull(message = "Quantity cannot be null")
+    @Min(value = 1, message = "Quantity must be at least 1")
     @PositiveOrZero(message = "quantity must be equal or grater than 0")
     private int quantity;
 

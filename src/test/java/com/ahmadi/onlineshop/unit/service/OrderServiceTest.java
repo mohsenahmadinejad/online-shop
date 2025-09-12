@@ -286,10 +286,10 @@ class OrderServiceTest {
 
         Page<Order> page = new PageImpl<>(List.of(order));
 
-        Mockito.when(orderRepository.findByTotalAmountBetween(100f, 300f, PageRequest.of(0, 10)))
+        Mockito.when(orderRepository.findByTotalAmountBetween(100D, 300D, PageRequest.of(0, 10)))
                 .thenReturn(page);
 
-        Page<Order> result = orderService.findByTotalAmountBetween(100f, 300f, PageRequest.of(0, 10));
+        Page<Order> result = orderService.findByTotalAmountBetween(100D, 300D, PageRequest.of(0, 10));
 
         assertEquals(1, result.getContent().size());
         assertEquals(200f, result.getContent().get(0).getTotalAmount());

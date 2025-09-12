@@ -4,6 +4,9 @@ public class ProductPopularityDto {
     private Long productId;
     private Long totalSold;
 
+    public ProductPopularityDto() {
+    }
+
     public ProductPopularityDto(Long productId, Long totalSold) {
         this.productId = productId;
         this.totalSold = totalSold;
