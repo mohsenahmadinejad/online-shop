@@ -55,7 +55,7 @@ public class CustomerController {
 
     @GetMapping("/phone") //GET /api/customers/phone?phone=0912&sortBy=firstName&direction=asc
     @Operation(summary = "Search customers with pagination and sorting", description = "Search customers with filters phone number")
-    public Page<Customer> searchByPhone(
+    public ResponseEntity<Page<Customer>> searchByPhone(
 
             @Parameter(description = "Customer phone number")
             @RequestParam String phone,
@@ -70,7 +70,7 @@ public class CustomerController {
 
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        return customerService.searchByPhone(phone, pageable);
+        return ResponseEntity.ok(customerService.searchByPhone(phone, pageable));
     }
 
 
@@ -111,7 +111,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update a customer", description = "Update customer details by ID")
-    public Customer updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDto customerDto ) {
-        return customerService.updateCustomer(id, customerDto);
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDto customerDto ) {
+        return ResponseEntity.ok(customerService.updateCustomer(id, customerDto));
     }
 }

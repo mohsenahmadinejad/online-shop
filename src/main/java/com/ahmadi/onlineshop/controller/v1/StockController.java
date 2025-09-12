@@ -5,6 +5,8 @@ import com.ahmadi.onlineshop.service.StockService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,32 +21,34 @@ public class StockController {
 
 
     @PostMapping
-    public Stock createStock(@Valid  @RequestBody Stock stock) {
-        return stockService.createStock(stock);
+    public ResponseEntity<Stock> createStock(@Valid  @RequestBody Stock stock) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(stockService.createStock(stock));
     }
 
     @GetMapping("/{id}")
-    public Stock getStock(@PathVariable Long id) {
-        return stockService.getStockById(id);
+    public ResponseEntity<Stock> getStock(@PathVariable Long id) {
+        return ResponseEntity.ok(stockService.getStockById(id));
     }
 
     @GetMapping("/product/{productId}")
-    public Stock getStockByProduct(@PathVariable Long productId) {
-        return stockService.getStockByProductId(productId);
+    public ResponseEntity<Stock> getStockByProduct(@PathVariable Long productId) {
+        return ResponseEntity.ok(stockService.getStockByProductId(productId));
     }
 
     @GetMapping
-    public List<Stock> getAllStocks() {
-        return stockService.getAllStocks();
+    public ResponseEntity<List<Stock>> getAllStocks() {
+        return ResponseEntity.ok(stockService.getAllStocks());
     }
 
     @PutMapping("/{id}")
-    public Stock updateStock(@PathVariable Long id, @Valid @RequestBody Stock stock) {
-        return stockService.updateStock(id, stock);
+    public ResponseEntity<Stock> updateStock(@PathVariable Long id, @Valid @RequestBody Stock stock) {
+        return ResponseEntity.ok(stockService.updateStock(id, stock));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStock(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteStock(@PathVariable Long id) {
         stockService.deleteStock(id);
+        return ResponseEntity.noContent().build();
+
     }
 }

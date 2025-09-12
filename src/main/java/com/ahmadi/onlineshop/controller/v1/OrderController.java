@@ -31,32 +31,32 @@ public class OrderController {
             summary = "Search orders by date range",
             description = "Find orders placed between startDate and endDate"
     )@GetMapping("/search/by-date-between") //2025-01-14T07:09:31
-    public Page<Order> searchOrders(
+    public ResponseEntity<Page<Order>> searchOrders(
             @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
             @PageableDefault(size = 10, sort = "orderDate", direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        return orderService.findByOrderDateBetween(start, end, pageable);
+        return ResponseEntity.ok(orderService.findByOrderDateBetween(start, end, pageable));
     }
 
     @Operation(
             summary = "Search orders by customer ID",
             description = "Find all orders placed by a specific customer"
     )@GetMapping("/search/by-customer")
-    public Page<Order> getOrdersByCustomer(
+    public ResponseEntity<Page<Order>> getOrdersByCustomer(
             @RequestParam("customerId") Long customerId,
             @PageableDefault(size = 10, sort = "orderDate", direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        return orderService.findByCustomerId(customerId, pageable);
+        return ResponseEntity.ok(orderService.findByCustomerId(customerId, pageable));
     }
 
     @GetMapping("/search/by-amount")
-    public Page<Order> searchOrdersByAmount(
+    public ResponseEntity<Page<Order>> searchOrdersByAmount(
             @RequestParam("min") Double min,
             @RequestParam("max") Double max,
             @PageableDefault(size = 10, sort = "orderDate", direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        return orderService.findByTotalAmountBetween(min, max, pageable);
+        return ResponseEntity.ok(orderService.findByTotalAmountBetween(min, max, pageable));
     }
 
 

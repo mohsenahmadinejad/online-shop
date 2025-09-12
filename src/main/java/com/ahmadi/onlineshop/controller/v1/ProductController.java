@@ -8,6 +8,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,40 +34,43 @@ public class ProductController {
             summary = "Get top selling products",
             description = "Find products with the highest total sales based on OrderItems"
     )
-    public List<ProductPopularityDto> getTopSelling(@RequestParam(defaultValue = "10") int topN) {
-        return productService.getTopSellingProducts(topN);
+    public ResponseEntity<List<ProductPopularityDto>> getTopSelling(@RequestParam(defaultValue = "10") int topN) {
+        return ResponseEntity.ok(productService.getTopSellingProducts(topN));
     }
 
 
     @PostMapping
     @Operation(summary = "Create a new product", description = "Add a new product to the system")
-    public Product createProduct(@Valid  @RequestBody Product product) {
-        return productService.createProduct(product);
+    public ResponseEntity<Product> createProduct(@Valid  @RequestBody Product product) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(product));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get product by ID", description = "Fetch a single product by its unique ID")
-    public Product getProduct(@PathVariable Long id) {
-        return productService.getProductById(id);
+    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getProductById(id));
     }
 
 
     @GetMapping
     @Operation(summary = "Get all products", description = "Fetch all products ")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<Page<Product>> listAllProducts(
+            @PageableDefault(size = 10, sort = "name", direction = Sort.Direction.ASC) Pageable pageable
+    ) {
+        return ResponseEntity.ok(productService.getAllProducts(pageable));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update product", description = "Update product details by ID")
-    public Product updateProduct(@PathVariable Long id, @Valid @RequestBody Product product) {
-        return productService.updateProduct(id, product);
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid @RequestBody Product product) {
+        return ResponseEntity.ok(productService.updateProduct(id, product));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete product", description = "Delete a product by its ID")
-    public void deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
