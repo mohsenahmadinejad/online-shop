@@ -91,8 +91,8 @@ class OrderServiceTest {
 
         assertNotNull(savedOrder);
         assertEquals(customer, savedOrder.getCustomer());
-        assertEquals(200.0, savedOrder.getTotalAmount()); // 2 * 100.0
-        assertEquals(savedOrder, orderItem.getOrder()); // ارتباط دوطرفه ست شده
+        assertEquals(200.0, savedOrder.getTotalAmount());
+        assertEquals(savedOrder, orderItem.getOrder());
 
         Mockito.verify(orderRepository).save(order);
         Mockito.verify(stockService).reduceStock(100L, 2);

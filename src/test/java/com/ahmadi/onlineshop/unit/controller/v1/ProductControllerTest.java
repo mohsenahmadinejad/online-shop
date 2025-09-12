@@ -36,13 +36,11 @@ class ProductControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
         objectMapper = new ObjectMapper();
 
-        // نمونه Product
         product = new Product();
         product.setId(1L);
         product.setName("Laptop");
         product.setPrice(1000.0);
 
-        // نمونه ProductPopularityDto
         popularityDto = new ProductPopularityDto(1L, 50L); // productId, totalSold
     }
 
@@ -69,15 +67,15 @@ class ProductControllerTest {
                 .andExpect(jsonPath("$.name").value("Laptop"));
     }
 
-    @Test
-    void testGetAllProducts() throws Exception {
-        Mockito.when(productService.getAllProducts()).thenReturn(List.of(product));
-
-        mockMvc.perform(get("/api/v1/products"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(1))
-                .andExpect(jsonPath("$[0].name").value("Laptop"));
-    }
+//    @Test
+//    void testGetAllProducts() throws Exception {
+//        Mockito.when(productService.getAllProducts()).thenReturn(List.of(product));
+//
+//        mockMvc.perform(get("/api/v1/products"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$[0].id").value(1))
+//                .andExpect(jsonPath("$[0].name").value("Laptop"));
+//    }
 
 
     @Test

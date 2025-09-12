@@ -41,7 +41,6 @@ class CustomerControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(customerController).build();
         objectMapper = new ObjectMapper();
 
-        // نمونه داده‌ها
         customerDto = new CustomerDto();
         customerDto.setId(1L);
         customerDto.setFirstName("Ali");
