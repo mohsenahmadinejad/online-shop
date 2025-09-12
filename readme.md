@@ -251,13 +251,27 @@ Content-Type: application/json
 
 ```json
 {
-  "customerId": 1,
-  "items": [
+  "customer": {
+    "id": 1
+  },
+  "orderItems": [
     {
-      "productId": 1,
+      "product": {
+        "id": 1
+      },
       "quantity": 2
+    },
+    {
+      "product": {
+        "id": 2
+      },
+      "quantity": 1
     }
-  ]
+  ],
+  "shippingAddress": {
+    "address": "aliasr",
+    "city": "Tehran"
+  }
 }
 ```
 

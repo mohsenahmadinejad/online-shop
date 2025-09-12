@@ -6,3 +6,4 @@ docker run --name=mysql1  -e MYSQL_DATABASE="online-shop" -e MYSQL_ROOT_PASSWORD
 docker run -p 8080:8080 --name=online-shop  --network  online-shop-network online-shop
 
 
+docker compose up
