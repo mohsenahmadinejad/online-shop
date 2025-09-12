@@ -47,7 +47,7 @@ public class Customer extends Auditable {
     @OneToMany(mappedBy = "customer" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @JoinColumn(name = "fk_customer_id" ,referencedColumnName = "id" ,nullable = false )
 //    @JsonIgnore
-    @JsonBackReference
+    @JsonManagedReference
     @Schema(description = "List of orders placed by the customer")
     private List<Order> orders;
 

@@ -35,12 +35,12 @@ public class Order extends Auditable {
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id",referencedColumnName = "id",nullable = false)
-    @JsonManagedReference
+    @JsonBackReference
     @Schema(description = "Customer who placed the order")
     private Customer   customer;
 
     @OneToMany(mappedBy = "order" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    @JsonManagedReference
+    @JsonManagedReference
     @Schema(description = "List of items in the order")
     private List<OrderItem> orderItems;
 

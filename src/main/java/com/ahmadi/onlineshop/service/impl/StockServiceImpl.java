@@ -2,6 +2,7 @@ package com.ahmadi.onlineshop.service.impl;
 
 import com.ahmadi.onlineshop.entity.Stock;
 import com.ahmadi.onlineshop.exception.InsufficientStockException;
+import com.ahmadi.onlineshop.exception.ProductNotFoundException;
 import com.ahmadi.onlineshop.exception.StockNotFoundException;
 import com.ahmadi.onlineshop.repository.StockRepository;
 import com.ahmadi.onlineshop.service.StockService;
@@ -55,7 +56,7 @@ public class StockServiceImpl implements StockService {
     @Transactional
     public void reduceStock(Long productId, int quantity) {
         Stock stock = stockRepository.findByProductId(productId)
-                .orElseThrow(() -> new IllegalArgumentException("Product not found: " + productId));
+                .orElseThrow(() -> new ProductNotFoundException("product not found in stock"));
 
         if (stock.getQuantity() < quantity) {
             throw new InsufficientStockException( productId,stock.getQuantity(),quantity);

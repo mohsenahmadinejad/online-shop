@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
                     .orElseThrow(() -> new StockNotFoundException("Stock not found for product " + product.getId()));
 
 
-            stockService.reduceStock(orderItem.getId(),orderItem.getQuantity());
+            stockService.reduceStock(product.getId(),orderItem.getQuantity());
 
 //            if (stock.getQuantity() < orderItem.getQuantity()) {
 //                throw new InsufficientStockException(product.getId(), stock.getQuantity(), orderItem.getQuantity());
