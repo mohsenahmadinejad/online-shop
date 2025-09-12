@@ -11,6 +11,7 @@ import com.ahmadi.onlineshop.repository.OrderRepository;
 import com.ahmadi.onlineshop.repository.ProductRepository;
 import com.ahmadi.onlineshop.repository.StockRepository;
 import com.ahmadi.onlineshop.service.OrderService;
+import com.ahmadi.onlineshop.service.StockService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -32,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
     private final CustomerRepository customerRepository;
 
     private final StockRepository stockRepository;
+    private final StockService stockService;
 
     private static final int MAX_RETRIES = 3;
 
@@ -65,11 +67,14 @@ public class OrderServiceImpl implements OrderService {
             Stock stock = stockRepository.findByProductId(product.getId())
                     .orElseThrow(() -> new StockNotFoundException("Stock not found for product " + product.getId()));
 
-            if (stock.getQuantity() < orderItem.getQuantity()) {
-                throw new InsufficientStockException(product.getId(), stock.getQuantity(), orderItem.getQuantity());
-            }
-            stock.setQuantity(stock.getQuantity() - orderItem.getQuantity());
-            stockRepository.save(stock);
+
+            stockService.reduceStock(orderItem.getId(),orderItem.getQuantity());
+
+//            if (stock.getQuantity() < orderItem.getQuantity()) {
+//                throw new InsufficientStockException(product.getId(), stock.getQuantity(), orderItem.getQuantity());
+//            }
+//            stock.setQuantity(stock.getQuantity() - orderItem.getQuantity());
+//            stockRepository.save(stock);
 
             orderItem.setOrder(order);
             orderItem.setPrice(product.getPrice()*orderItem.getQuantity());

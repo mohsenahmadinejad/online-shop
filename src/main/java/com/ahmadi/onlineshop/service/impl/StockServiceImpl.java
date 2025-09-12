@@ -1,8 +1,11 @@
-package com.ahmadi.onlineshop.service;
+package com.ahmadi.onlineshop.service.impl;
 
 import com.ahmadi.onlineshop.entity.Stock;
+import com.ahmadi.onlineshop.exception.InsufficientStockException;
 import com.ahmadi.onlineshop.exception.StockNotFoundException;
 import com.ahmadi.onlineshop.repository.StockRepository;
+import com.ahmadi.onlineshop.service.StockService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +49,19 @@ public class StockServiceImpl implements StockService {
     @Override
     public void deleteStock(Long id) {
         stockRepository.deleteById(id);
+    }
+
+
+    @Transactional
+    public void reduceStock(Long productId, int quantity) {
+        Stock stock = stockRepository.findByProductId(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found: " + productId));
+
+        if (stock.getQuantity() < quantity) {
+            throw new InsufficientStockException( productId,stock.getQuantity(),quantity);
+        }
+
+        stock.setQuantity(stock.getQuantity() - quantity);
+        stockRepository.save(stock);
     }
 }

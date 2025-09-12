@@ -4,6 +4,8 @@ import com.ahmadi.onlineshop.dto.ProductPopularityDto;
 import com.ahmadi.onlineshop.entity.Category;
 import com.ahmadi.onlineshop.entity.Product;
 import com.ahmadi.onlineshop.exception.CategoryNotFoundException;
+import com.ahmadi.onlineshop.exception.CustomerNotFoundException;
+import com.ahmadi.onlineshop.exception.ProductNotFoundException;
 import com.ahmadi.onlineshop.repository.CategoryRepository;
 import com.ahmadi.onlineshop.repository.ProductRepository;
 import com.ahmadi.onlineshop.service.ProductService;
@@ -44,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Cacheable(value = "product", key = "#id")
     public Product getProductById(Long id) {
-        return productRepository.findById(id).orElse(null);
+        return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("asdf"));
     }
 
     @Override

@@ -11,4 +11,6 @@ public interface StockService {
     List<Stock> getAllStocks();
     Stock updateStock(Long id, Stock stock);
     void deleteStock(Long id);
-}
+    void reduceStock(Long productId, int quantity) ;
+
+    }
